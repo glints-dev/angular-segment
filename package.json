@@ -1,0 +1,25 @@
+{
+  "name": "angular-segment",
+  "version": "0.0.1",
+  "description": "AngularJS module for Segment, the Analytics API and customer data hub.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glints-dev/angular-segment.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "segment",
+    "analytics"
+  ],
+  "author": "Wong Yong Jie <yjwong92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glints-dev/angular-segment/issues"
+  },
+  "homepage": "https://github.com/glints-dev/angular-segment#readme"
+}
