@@ -44,3 +44,17 @@ $rootScope.on('$stateChangeSuccess', function () {
   Segment.page();
 });
 ```
+
+# Directives
+
+There is currently one directive to simply tracking.
+
+```html
+<button type="submit"
+        data-segment-track="Signed Up"
+        data-segment-track-options="{
+          plan: 'Startup',
+          source: 'Analytics Academy'
+        }">
+</button>
+```
