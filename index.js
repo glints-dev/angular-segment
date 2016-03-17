@@ -55,33 +55,55 @@
           'off', 'on'
         ];
 
-        analytics.factory = function (t) {
+        analytics.factory = function (method) {
           return function () {
-            var e = Array.prototype.slice.call(arguments);
-            e.unshift(t);
-            analytics.push(e);
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift(method);
+            analytics.push(args);
             return analytics;
           };
         };
 
-        for (var t = 0; t < analytics.methods.length; t++) {
-          var e = analytics.methods[t];
-          analytics[e] = analytics.factory(e);
+        for (var i = 0; i < analytics.methods.length; i++) {
+          var key = analytics.methods[i];
+          analytics[key] = analytics.factory(key);
         }
 
-        analytics.load = function (t) {
-          var e = $window.document.createElement('script');
-          e.type = 'text/javascript';
-          e.async = true;
-          e.src = '//cdn.segment.com/analytics.js/v1/' + t +'/analytics.min.js';
-          var n = $window.document.getElementsByTagName('script')[0];
-          n.parentNode.insertBefore(e, n);
+        analytics.load = function (key) {
+          var script = $window.document.createElement('script');
+          script.type = 'text/javascript';
+          script.async = true;
+          script.src = '//cdn.segment.com/analytics.js/v1/' + key +'/analytics.min.js';
+          script.onload = function () {
+            angular.copy($window.analytics, analytics);
+          };
+
+          var first = $window.document.getElementsByTagName('script')[0];
+          first.parentNode.insertBefore(script, first);
         };
 
         analytics.SNIPPET_VERSION = '3.1.0';
         analytics.load(writeKey);
 
         return analytics;
+      };
+    })
+    /**
+     * @ngdoc directive
+     * @restrict A
+     */
+    .directive('segmentTrack', function (Segment) {
+      return {
+        restrict: 'A',
+        scope: {
+          event: '@segmentTrack',
+          options: '<?segmentTrackOptions'
+        },
+        link: function link(scope, elem) {
+          elem.click(function () {
+            Segment.track(scope.event, scope.options);
+          });
+        }
       };
     });
 }));
