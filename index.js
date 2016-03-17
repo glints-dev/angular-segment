@@ -16,7 +16,7 @@
     factory(root, root.angular);
   }
 }(this, function (global, angular) {
-  angular.module('ngSegment')
+  angular.module('ngSegment', [])
     .provider('Segment', function SegmentProvider() {
       var writeKey = null;
 
