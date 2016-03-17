@@ -5,6 +5,16 @@ An AngularJS module for Segment, the Analytics API and customer data hub.
 This module automatically includes Segment's Analytics.js library, you do not
 need to include it yourself.
 
+# Installing
+
+At the moment, the name `angular-segment` has been taken up by another project.
+
+So you need to include this project via Git:
+
+```bash
+bower install --save https://github.com/glints-dev/angular-segment#master
+```
+
 # Example
 
 Inject `SegmentProvider` into your `.config()` block, then configure as
