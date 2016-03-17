@@ -2,6 +2,9 @@
 
 An AngularJS module for Segment, the Analytics API and customer data hub.
 
+This module automatically includes Segment's Analytics.js library, you do not
+need to include it yourself.
+
 # Example
 
 Inject `SegmentProvider` into your `.config()` block, then configure as
