@@ -17,13 +17,35 @@
   }
 }(this, function (global, angular) {
   angular.module('ngSegment', [])
+    /**
+     * @ngdoc service
+     * @module ngSegment
+     * @name SegmentProvider
+     */
     .provider('Segment', function SegmentProvider() {
       var writeKey = null;
 
+      /**
+       * @ngdoc method
+       * @methodOf SegmentProvider
+       * @name setWriteKey
+       * @param {String} key The write key to be used
+       * @description
+       * Sets the write key to be used with Segment. See Segment's documentation
+       * for more information:
+       * https://segment.com/docs/libraries/analytics.js/quickstart/
+       */
       this.setWriteKey = function setWriteKey(key) {
         writeKey = key;
       };
 
+      /**
+       * @ngdoc service
+       * @module ngSegment
+       * @name Segment
+       * See Segment's Analytics.js documentation for more info:
+       * https://segment.com/docs/libraries/analytics.js/
+       */
       this.$get = function SegmentFactory($window) {
         var analytics = $window.analytics = $window.analytics || [];
 
